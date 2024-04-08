@@ -39,42 +39,6 @@
     --dark-color-tooltip: rgba(61, 76, 104, 0.9);
 }
 
-html[data-theme-animations='off'] {
-    .ant-menu,
-    .ant-layout-sider,
-    .ant-card,
-    .ant-tag,
-    .ant-progress-circle > *,
-    .ant-input,
-    .ant-table-row-expand-icon,
-    .ant-switch,
-    .ant-table-thead > tr > th,
-    .ant-select-selection,
-    .ant-btn,
-    .ant-input-number,
-    .ant-input-group-addon,
-    .ant-checkbox-inner,
-    .ant-progress-bg, .ant-progress-success-bg,
-    .ant-radio-button-wrapper:not(:first-child):before,
-    .ant-radio-button-wrapper,
-    #login {
-        transition: border 0s, background 0s !important;
-    }
-
-    .ant-menu-item, .ant-menu-submenu-title,
-    .ant-alert-close-icon .anticon-close,
-    .ant-tabs-nav .ant-tabs-tab,
-    .ant-input-number-input,
-    .ant-collapse>.ant-collapse-item>.ant-collapse-header,
-    .Line-Hover {
-        transition: color 0s !important;
-    }
-
-    .wave-btn-bg {
-        transition: width 0s !important;
-    }
-}
-
 html[data-theme='ultra-dark'] {
     --dark-color-background: #21242a;
     --dark-color-surface-100: #0c0e12;
@@ -252,7 +216,7 @@ style attribute {
     .ant-layout-sider {
         display: none;
     }
-    .ant-card, .ant-alert-error {
+    .ant-card {
         margin: 0.5rem;
     }
     .ant-tabs {
@@ -383,9 +347,6 @@ style attribute {
     }
     .ant-tabs {
         padding: 2rem;
-    }
-    .ant-alert-error {
-        margin-inline: 0.3rem;
     }
 }
 
@@ -1347,7 +1308,7 @@ b, strong {
     height: 20px;
 }
 
-.ant-menu-theme-switch, .ant-menu-theme-switch:hover {
+.ant-menu-theme-switch:hover {
     background-color: transparent !important;
     cursor: default !important;
 }
@@ -1451,18 +1412,4 @@ b, strong {
     background: currentcolor;
     transition: transform 0.3s ease-out;
     content: "";
-}
-
-.ant-menu-item:active, .ant-menu-submenu-title:active {
-    background: transparent;
-}
-
-.ant-menu-theme-switch.ant-menu-item .ant-switch:not(.ant-switch-disabled):active:after, .ant-switch:not(.ant-switch-disabled):active:before {
-    width: 16px;
-}
-
-.dark .ant-select-disabled .ant-select-selection {
-    background: var(--dark-color-surface-100);
-    border-color: var(--dark-color-surface-200);
-    color: rgba(255, 255, 255, 0.25);
 }

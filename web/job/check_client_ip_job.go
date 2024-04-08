@@ -49,9 +49,10 @@ func (j *CheckClientIpJob) Run() {
 		}
 	}
 
-	if shouldClearAccessLog || isAccessLogAvailable && time.Now().Unix()-j.lastClear > 3600 {
-		j.clearAccessLog()
-	}
+	_ = shouldClearAccessLog
+	// if shouldClearAccessLog || isAccessLogAvailable && time.Now().Unix()-j.lastClear > 3600 {
+	// 	j.clearAccessLog()
+	// }
 }
 
 func (j *CheckClientIpJob) clearAccessLog() {
