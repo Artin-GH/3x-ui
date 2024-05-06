@@ -1210,7 +1210,7 @@ show_usage() {
 
 show_menu() {
     echo -e "
-  ${green}PX-UI Panel Management Script${plain}
+  ${green}PX-ui Panel Management Script${plain}
   ${green}0.${plain} Exit Script
 ————————————————
   ${green}1.${plain} Install

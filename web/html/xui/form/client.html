@@ -156,7 +156,7 @@
                             value="client._expiryTime" v-model="client._expiryTime"></persian-datepicker>
         <a-tag color="red" v-if="isEdit && isExpiry">Expired</a-tag>
     </a-form-item>
-    <a-form-item v-if="client.expiryTime != 0">
+    <!-- <a-form-item v-if="client.expiryTime != 0">
         <template slot="label">
             <a-tooltip>
                 <template slot="title">{{ i18n "pages.client.renewDesc" }}</template>
@@ -165,6 +165,6 @@
             </a-tooltip>
         </template>
         <a-input-number v-model.number="client.reset" :min="0"></a-input-number>
-    </a-form-item>
+    </a-form-item> -->
 </a-form>
 {{end}}

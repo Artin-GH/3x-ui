@@ -3,9 +3,12 @@ package controller
 import (
 	"encoding/json"
 	"fmt"
+	"os"
 	"strconv"
+	"strings"
 
 	"x-ui/database/model"
+	"x-ui/util/common"
 	"x-ui/web/service"
 	"x-ui/web/session"
 
@@ -28,19 +31,28 @@ func (a *InboundController) initRouter(g *gin.RouterGroup) {
 
 	g.POST("/list", a.getInbounds)
 	g.POST("/add", a.addInbound)
-	// g.POST("/del/:id", a.delInbound)
-	// g.POST("/update/:id", a.updateInbound)
+	g.POST("/del/:id", a.delInbound)
+	g.POST("/update/:id", a.updateInbound)
 	g.POST("/clientIps/:email", a.getClientIps)
 	g.POST("/clearClientIps/:email", a.clearClientIps)
 	g.POST("/addClient", a.addInboundClient)
-	// g.POST("/:id/delClient/:clientId", a.delInboundClient)
-	// g.POST("/updateClient/:clientId", a.updateInboundClient)
-	// g.POST("/:id/resetClientTraffic/:email", a.resetClientTraffic)
-	// g.POST("/resetAllTraffics", a.resetAllTraffics)
-	// g.POST("/resetAllClientTraffics/:id", a.resetAllClientTraffics)
-	// g.POST("/delDepletedClients/:id", a.delDepletedClients)
+	g.POST("/:id/delClient/:clientId", a.delInboundClient)
+	g.POST("/updateClient/:clientId", a.updateInboundClient)
+	g.POST("/:id/resetClientTraffic/:email", a.resetClientTraffic)
+	g.POST("/resetAllTraffics", a.resetAllTraffics)
+	g.POST("/resetAllClientTraffics/:id", a.resetAllClientTraffics)
+	g.POST("/delDepletedClients/:id", a.delDepletedClients)
 	g.POST("/import", a.importInbound)
 	g.POST("/onlines", a.onlines)
+}
+
+func handleAccessToUpdateClient(c *gin.Context) bool {
+	botIps := strings.Split(os.Getenv("BOT_IP"), ",")
+	if !common.ArrayContainsString(c.RemoteIP(), botIps) {
+		jsonMsg(c, "URI Access", common.NewError("You don't have access to this URI"))
+		return false
+	}
+	return true
 }
 
 func (a *InboundController) getInbounds(c *gin.Context) {
@@ -101,6 +113,9 @@ func (a *InboundController) addInbound(c *gin.Context) {
 }
 
 func (a *InboundController) delInbound(c *gin.Context) {
+	if !handleAccessToUpdateClient(c) {
+		return
+	}
 	id, err := strconv.Atoi(c.Param("id"))
 	if err != nil {
 		jsonMsg(c, I18nWeb(c, "delete"), err)
@@ -115,6 +130,10 @@ func (a *InboundController) delInbound(c *gin.Context) {
 }
 
 func (a *InboundController) updateInbound(c *gin.Context) {
+	if !handleAccessToUpdateClient(c) {
+		return
+	}
+
 	id, err := strconv.Atoi(c.Param("id"))
 	if err != nil {
 		jsonMsg(c, I18nWeb(c, "pages.inbounds.update"), err)
@@ -181,6 +200,10 @@ func (a *InboundController) addInboundClient(c *gin.Context) {
 }
 
 func (a *InboundController) delInboundClient(c *gin.Context) {
+	if !handleAccessToUpdateClient(c) {
+		return
+	}
+
 	id, err := strconv.Atoi(c.Param("id"))
 	if err != nil {
 		jsonMsg(c, I18nWeb(c, "pages.inbounds.update"), err)
@@ -202,6 +225,10 @@ func (a *InboundController) delInboundClient(c *gin.Context) {
 }
 
 func (a *InboundController) updateInboundClient(c *gin.Context) {
+	if !handleAccessToUpdateClient(c) {
+		return
+	}
+
 	clientId := c.Param("clientId")
 
 	inbound := &model.Inbound{}
@@ -225,6 +252,10 @@ func (a *InboundController) updateInboundClient(c *gin.Context) {
 }
 
 func (a *InboundController) resetClientTraffic(c *gin.Context) {
+	if !handleAccessToUpdateClient(c) {
+		return
+	}
+
 	id, err := strconv.Atoi(c.Param("id"))
 	if err != nil {
 		jsonMsg(c, I18nWeb(c, "pages.inbounds.update"), err)
@@ -246,6 +277,10 @@ func (a *InboundController) resetClientTraffic(c *gin.Context) {
 }
 
 func (a *InboundController) resetAllTraffics(c *gin.Context) {
+	if !handleAccessToUpdateClient(c) {
+		return
+	}
+
 	err := a.inboundService.ResetAllTraffics()
 	if err != nil {
 		jsonMsg(c, "Something went wrong!", err)
@@ -257,6 +292,10 @@ func (a *InboundController) resetAllTraffics(c *gin.Context) {
 }
 
 func (a *InboundController) resetAllClientTraffics(c *gin.Context) {
+	if !handleAccessToUpdateClient(c) {
+		return
+	}
+
 	id, err := strconv.Atoi(c.Param("id"))
 	if err != nil {
 		jsonMsg(c, I18nWeb(c, "pages.inbounds.update"), err)
@@ -303,6 +342,10 @@ func (a *InboundController) importInbound(c *gin.Context) {
 }
 
 func (a *InboundController) delDepletedClients(c *gin.Context) {
+	if !handleAccessToUpdateClient(c) {
+		return
+	}
+
 	id, err := strconv.Atoi(c.Param("id"))
 	if err != nil {
 		jsonMsg(c, I18nWeb(c, "pages.inbounds.update"), err)

@@ -1,10 +1,10 @@
 .idea
 .vscode
 .cache
+.env
 .sync*
 *.tar.gz
 *.log
-.env
 access.log
 error.log
 tmp

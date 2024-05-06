@@ -6,6 +6,7 @@ import (
 	"errors"
 	"fmt"
 	"io/fs"
+	"log"
 	"os"
 	"os/exec"
 	"runtime"
@@ -15,6 +16,8 @@ import (
 	"x-ui/config"
 	"x-ui/logger"
 	"x-ui/util/common"
+
+	"github.com/joho/godotenv"
 )
 
 func GetBinaryName() string {
@@ -92,6 +95,11 @@ type Process struct {
 func NewProcess(xrayConfig *Config) *Process {
 	p := &Process{newProcess(xrayConfig)}
 	runtime.SetFinalizer(p, stopProcess)
+	err := godotenv.Load(".env")
+	if err != nil {
+		log.Fatal("Error loading .env file")
+		return nil
+	}
 	return p
 }
 
