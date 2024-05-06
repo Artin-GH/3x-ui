@@ -2,9 +2,9 @@
 version: "3"
 
 services:
-  3x-ui:
-    image: ghcr.io/Artin-GH/3x-ui:latest
-    container_name: 3x-ui
+  px-ui:
+    image: ghcr.io/Artin-GH/px-ui:latest
+    container_name: px-ui
     hostname: yourhostname
     volumes:
       - $PWD/db/:/etc/x-ui/

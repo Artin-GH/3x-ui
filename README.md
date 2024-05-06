@@ -6,24 +6,24 @@
 
 **An Advanced Web Panel • Built on Xray Core**
 
-[![](https://img.shields.io/github/v/release/Artin-GH/3x-ui.svg)](https://github.com/Artin-GH/3x-ui/releases)
-[![](https://img.shields.io/github/actions/workflow/status/Artin-GH/3x-ui/release.yml.svg)](#)
-[![GO Version](https://img.shields.io/github/go-mod/go-version/Artin-GH/3x-ui.svg)](#)
-[![Downloads](https://img.shields.io/github/downloads/Artin-GH/3x-ui/total.svg)](#)
+[![](https://img.shields.io/github/v/release/Artin-GH/px-ui.svg)](https://github.com/Artin-GH/px-ui/releases)
+[![](https://img.shields.io/github/actions/workflow/status/Artin-GH/px-ui/release.yml.svg)](#)
+[![GO Version](https://img.shields.io/github/go-mod/go-version/Artin-GH/px-ui.svg)](#)
+[![Downloads](https://img.shields.io/github/downloads/Artin-GH/px-ui/total.svg)](#)
 [![License](https://img.shields.io/badge/license-GPL%20V3-blue.svg?longCache=true)](https://www.gnu.org/licenses/gpl-3.0.en.html)
 
 > **Disclaimer:** This project is only for personal learning and communication, please do not use it for illegal purposes, please do not use it in a production environment
 
 **If this project is helpful to you, you may wish to give it a**:star2:
 
-<p align="left"><a href="#"><img width="125" src="https://github.com/Artin-GH/3x-ui/assets/115543613/7aa895dd-048a-42e7-989b-afd41a74e2e1" alt="Image"></a></p>
+<p align="left"><a href="#"><img width="125" src="https://github.com/Artin-GH/px-ui/assets/115543613/7aa895dd-048a-42e7-989b-afd41a74e2e1" alt="Image"></a></p>
 
 - USDT (TRC20): `TXncxkvhkDWGts487Pjqq1qT9JmwRUz8CC`
 
 ## Install & Upgrade
 
 ```
-bash <(curl -Ls https://raw.githubusercontent.com/Artin-GH/3x-ui/master/install.sh)
+bash <(curl -Ls https://raw.githubusercontent.com/Artin-GH/px-ui/master/install.sh)
 ```
 
 ## Install Custom Version
@@ -31,7 +31,7 @@ bash <(curl -Ls https://raw.githubusercontent.com/Artin-GH/3x-ui/master/install.
 To install your desired version, add the version to the end of the installation command. e.g., ver `v2.2.6`:
 
 ```
-bash <(curl -Ls https://raw.githubusercontent.com/Artin-GH/3x-ui/master/install.sh) v2.2.6
+bash <(curl -Ls https://raw.githubusercontent.com/Artin-GH/px-ui/master/install.sh) v2.2.6
 ```
 
 ## SSL Certificate
@@ -83,7 +83,7 @@ case "${ARCH}" in
 esac
 
 
-wget https://github.com/Artin-GH/3x-ui/releases/latest/download/x-ui-linux-${XUI_ARCH}.tar.gz
+wget https://github.com/Artin-GH/px-ui/releases/latest/download/x-ui-linux-${XUI_ARCH}.tar.gz
 ```
 
 2. Once the compressed package is downloaded, execute the following commands to install or upgrade x-ui:
@@ -130,8 +130,8 @@ systemctl restart x-ui
 2. Clone the Project Repository:
 
    ```sh
-   git clone https://github.com/Artin-GH/3x-ui.git
-   cd 3x-ui
+   git clone https://github.com/Artin-GH/px-ui.git
+   cd px-ui
    ```
 
 3. Start the Service
@@ -149,26 +149,26 @@ systemctl restart x-ui
       -v $PWD/cert/:/root/cert/ \
       --network=host \
       --restart=unless-stopped \
-      --name 3x-ui \
-      ghcr.io/Artin-GH/3x-ui:latest
+      --name px-ui \
+      ghcr.io/Artin-GH/px-ui:latest
    ```
 
 update to latest version
 
    ```sh
-    cd 3x-ui
+    cd px-ui
     docker compose down
-    docker compose pull 3x-ui
+    docker compose pull px-ui
     docker compose up -d
    ```
 
-remove 3x-ui from docker 
+remove px-ui from docker 
 
    ```sh
-    docker stop 3x-ui
-    docker rm 3x-ui
+    docker stop px-ui
+    docker rm px-ui
     cd --
-    rm -r 3x-ui
+    rm -r px-ui
    ```
 
 </details>
@@ -471,4 +471,4 @@ XUI_BIN_FOLDER="bin" XUI_DB_FOLDER="/etc/x-ui" go build main.go
 
 ## Stargazers over Time
 
-[![Stargazers over time](https://starchart.cc/Artin-GH/3x-ui.svg)](https://starchart.cc/Artin-GH/3x-ui)
+[![Stargazers over time](https://starchart.cc/Artin-GH/px-ui.svg)](https://starchart.cc/Artin-GH/px-ui)
