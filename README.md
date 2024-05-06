@@ -1,8 +1,8 @@
-# 3X-UI
+# PX-UI
 
 [English](/README.md) | [Chinese](/README.zh.md) | [Español](/README.es_ES.md)
 
-<p align="center"><a href="#"><img src="./media/3X-UI.png" alt="Image"></a></p>
+<p align="center"><a href="#"><img src="./media/PX-UI.png" alt="Image"></a></p>
 
 **An Advanced Web Panel • Built on Xray Core**
 
