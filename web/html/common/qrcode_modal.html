@@ -68,7 +68,7 @@
         methods: {
             copyToClipboard(elmentId, content) {
                 this.qrModal.clipboard = new ClipboardJS('#' + elmentId, {
-                    text: () => content.replace(/\@./, "@"),
+                    text: () => content.replace(/\@k/, "@"),
                 });
                 this.qrModal.clipboard.on('success', () => {
                     app.$message.success('{{ i18n "copied" }}')
